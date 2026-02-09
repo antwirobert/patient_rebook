@@ -31,7 +31,23 @@ const App = () => {
           ))}
         </ul>
         <div className="mt-12 flex flex-col items-center gap-2">
-          <Button className="px-10 py-[26px]">Book a 15-minute call</Button>
+          <Button
+            onClick={() => {
+              if (window.Calendly) {
+                window.Calendly.initPopupWidget({
+                  url: "https://calendly.com/robertantwi84/30min",
+                });
+              } else {
+                window.open(
+                  "https://calendly.com/robertantwi84/30min",
+                  "_blank",
+                );
+              }
+            }}
+            className="px-10 py-6.5"
+          >
+            Book a 15-minute call
+          </Button>
           <span className="text-xs text-[#6b7282]">
             No obligation • Takes 15 minutes
           </span>
